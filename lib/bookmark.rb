@@ -6,7 +6,8 @@ class Bookmark
 
   def self.all
     bookmarks_arr = []
-    con = PG.connect dbname: 'bookmark_manager', user: ENV['USER']
+    database_name = ENV['RACK_ENV'] == 'development' ? 'bookmark_manager' : 'bookmark_manager_test'
+    con = PG.connect dbname: database_name, user: ENV['USER']
 
     rs = con.exec 'SELECT * FROM bookmarks'
 
@@ -14,8 +15,11 @@ class Bookmark
       bookmarks_arr << "#{row['id']},#{row['url']}"
     end
     bookmarks_arr
+
+  # :nocov: 
   rescue PG::Error => e
     puts e.message
+  # :nocov:
   ensure
     rs&.clear
     con&.close
