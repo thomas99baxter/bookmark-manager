@@ -83,6 +83,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (~> 3.35)
+  pg (~> 1.2)
   postgresql (~> 1.0)
   rspec (~> 3.10)
   rubocop (~> 1.22)
