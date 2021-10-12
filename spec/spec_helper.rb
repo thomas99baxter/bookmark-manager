@@ -4,6 +4,7 @@ require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 # require 'features/web_helpers'
+require 'pg'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
                                                                  SimpleCov::Formatter::Console,
@@ -20,6 +21,18 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 Capybara.app = BookmarkManager
 
 RSpec.configure do |config|
+
+  config.before(:each) do
+
+    con = PG.connect dbname: 'bookmark_manager_test', user: ENV['USER']
+    con.exec "TRUNCATE bookmarks;"
+    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (1, \'http://www.makersacademy.com/\');'
+    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (2, \'http://www.schmakersacademy.com/\');'
+    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (4, \'http://www.google.com/\');'
+    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (3, \'http://www.twitter.com/\');'
+
+  end
+
   config.after(:suite) do
     puts
     puts "\e[33mHave you considered running rubocop? It will help you improve your code!\e[0m"
