@@ -2,7 +2,7 @@
 
 require 'pg'
 require_relative 'new_bookmark'
-class Bookmark
+class BookmarkAccessor
   def initialize; end
 
   def self.all
