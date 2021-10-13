@@ -26,10 +26,10 @@ RSpec.configure do |config|
 
     con = PG.connect dbname: 'bookmark_manager_test', user: ENV['USER']
     con.exec "TRUNCATE bookmarks;"
-    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (1, \'http://www.makersacademy.com/\');'
-    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (2, \'http://www.schmakersacademy.com/\');'
-    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (4, \'http://www.google.com/\');'
-    con.exec 'INSERT INTO "bookmarks" ("id", "url") VALUES (3, \'http://www.twitter.com/\');'
+    con.exec 'INSERT INTO "bookmarks" ("id", "url", "title") VALUES (1, \'http://www.makersacademy.com/\', \'makers\');'
+    con.exec 'INSERT INTO "bookmarks" ("id", "url", "title") VALUES (2, \'http://www.schmakersacademy.com/\', \'schmakers\');'
+    con.exec 'INSERT INTO "bookmarks" ("id", "url", "title") VALUES (4, \'http://www.google.com/\', \'google\');'
+    con.exec 'INSERT INTO "bookmarks" ("id", "url", "title") VALUES (3, \'http://www.twitter.com/\', \'twitter\');'
 
   end
 
