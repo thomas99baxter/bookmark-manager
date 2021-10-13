@@ -6,6 +6,9 @@ So I can see what bookmarks i have
 I would like a list of all bookmarks displayed on the browser.
 
 # Add new bookmarks
+As a user,
+So that I can remember my good sites I find
+I would like to be able to save my bookmarks
 
 
 # Delete bookmarks

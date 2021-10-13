@@ -24,4 +24,11 @@ class Bookmark
     rs&.clear
     con&.close
   end
+
+  def self.create(id, url)
+    database_name = ENV['RACK_ENV'] == 'development' ? 'bookmark_manager' : 'bookmark_manager_test'
+    con = PG.connect dbname: database_name, user: ENV['USER']
+
+    con.exec("INSERT INTO bookmarks(id, url) VALUES (#{id}, '#{url}');")
+  end
 end
