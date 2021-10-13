@@ -6,7 +6,7 @@ feature 'Bookmarks page' do
     visit('/bookmarks')
 
     expect(page).to have_content(
-      "Id Url 1 http://www.makersacademy.com/ 2 http://www.schmakersacademy.com/ 4 http://www.google.com/ 3 http://www.twitter.com/"
+      "Id Title 1 makers 2 schmakers 4 google 3 twitter"
     )
   end
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'pg'
+require_relative 'new_bookmark'
 class Bookmark
   def initialize; end
 
@@ -12,7 +13,8 @@ class Bookmark
     rs = con.exec 'SELECT * FROM bookmarks'
 
     rs.each do |row|
-      bookmarks_arr << "#{row['id']},#{row['url']},#{row['title']}"
+      bookmarks_arr << NewBookmark.new(row['id'], row['url'], row['title'])
+
     end
     bookmarks_arr
 

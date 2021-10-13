@@ -10,6 +10,6 @@ feature 'Add bookmark' do
     fill_in("url", with: "http://foogywoogyoogle.com")
     fill_in("title", with: "Foogy")
     click_button "Submit"
-    expect(page).to have_content("http://foogywoogyoogle.com")
+    expect(page).to have_content("Foogy")
   end
 end

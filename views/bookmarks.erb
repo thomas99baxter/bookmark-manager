@@ -1,14 +1,13 @@
 <table>
   <tr>
     <th>Id</th>
-    <th>Url</th>
+    <th>Title</th>
   </tr>
   <% @bookmarks.each do |bookmark| %>
     
-    <% bookmark_fields = bookmark.split(',')%>
     <tr>
-      <td><%= bookmark_fields[0] %></td>
-      <td><%= bookmark_fields[1] %></td>
+      <td><%= bookmark.id %></td>
+      <td href="<%= bookmark.url%>"><%= bookmark.title %></td>
     </tr>
   <%end %>
 </table>
