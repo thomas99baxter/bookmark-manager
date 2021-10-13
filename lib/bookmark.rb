@@ -33,7 +33,7 @@ class Bookmark
   def self.create(id, url, title)
     database_name = ENV['RACK_ENV'] == 'development' ? 'bookmark_manager' : 'bookmark_manager_test'
     con = PG.connect dbname: database_name, user: ENV['USER']
-
-    con.exec("INSERT INTO bookmarks(id, url, title) VALUES (#{id}, '#{url}', '#{title}');")
+  
+    con.exec_params("INSERT INTO bookmarks(id, url, title) VALUES ($1, $2, $3);", [id, url, title])
   end
 end
