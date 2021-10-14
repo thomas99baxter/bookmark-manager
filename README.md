@@ -12,6 +12,9 @@ I would like to be able to save my bookmarks
 
 
 # Delete bookmarks
+As a user, 
+So I can forget about sites i no longer use,
+I'd like to be able to delete an existing bookmark
 
 
 # Update bookmarks
