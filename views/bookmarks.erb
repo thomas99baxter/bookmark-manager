@@ -10,6 +10,10 @@
       <td><%= bookmark.id %></td>
       <td><a href="<%= bookmark.url%>"><%= bookmark.title %></a></td>
       <td>
+        <form action="/update_bookmark" method="GET">
+        <input type="hidden" value="<%= bookmark.url%>" name="url">
+        <input type="submit" value="Update Bookmark">
+        </form>
         <form action="/delete_bookmark" method="POST">
         <input type="hidden" value="<%= bookmark.url%>" name="url">
         <input type="submit" value="Delete Bookmark">

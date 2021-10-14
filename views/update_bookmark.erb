@@ -1,0 +1,6 @@
+<form method="post" action="/update_bookmark">
+<input type="hidden" name="existing_url" value="<%= @url %>" required>
+<input type="text" name="new_url" value="<%= @url %>" required>
+<input type="text" name="new_title" value="<%= @title %>">
+<input type="submit" name="Submit">
+</form>

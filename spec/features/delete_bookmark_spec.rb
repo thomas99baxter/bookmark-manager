@@ -4,6 +4,6 @@ feature 'Delete bookmarks' do
     within("//tr[@id='4']") do
       click_button("Delete Bookmark")
     end
-    expect(page).to_not have_content("http://www.google.com/")
+    expect(page).to_not have_content("google")
   end
 end

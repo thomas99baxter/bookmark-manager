@@ -35,5 +35,18 @@ class BookmarkManager < Sinatra::Base
     redirect "/bookmarks"
   end
 
+  get "/update_bookmark" do
+    found_bookmark = BookmarkAccessor.find(params[:url])
+    @url = found_bookmark.url
+    @title = found_bookmark.title
+    erb(:update_bookmark)
+  end
+
+  post "/update_bookmark" do
+    BookmarkAccessor.update(params[:existing_url], params[:new_url], params[:new_title])
+    # TODO: add alert to say bookmark has been updated
+    redirect "/bookmarks"
+  end
+
   run! if app_file == $PROGRAM_NAME
 end

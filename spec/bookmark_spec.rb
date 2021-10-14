@@ -34,7 +34,13 @@ describe BookmarkAccessor do
   xit 'should update a bookmark when urls and titles are provided' do
     expect{described_class.update('http://www.google.com/', 'http://www.bing.com/')}.to change{described_class.all.filter{
       |b| b.url == 'http://www.google.com/'
-    }[0]}.from("http://www.google.com/").to('http://www.bing.com/')
-    
+    }[0]}.from("http://www.google.com/").to('http://www.bing.com/') 
+  end
+
+  it 'should find a bookmark when url is provided' do
+    found_bookmark = described_class.find('http://www.google.com/')
+    expect(found_bookmark.class).to eq(NewBookmark)
+    expect(found_bookmark.title).to eq("google")
+    expect(found_bookmark.id).to eq("4")
   end
 end
