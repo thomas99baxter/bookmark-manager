@@ -43,4 +43,11 @@ class BookmarkAccessor
     con = PG.connect dbname: database_name, user: ENV['USER']
     con.exec("DELETE FROM bookmarks WHERE url = '#{url}'")
   end
+
+  def self.update(existing_url, new_url, new_title="")
+    database_name = ENV['RACK_ENV'] == 'development' ? 'bookmark_manager' : 'bookmark_manager_test'
+    con = PG.connect dbname: database_name, user: ENV['USER']
+    con.exec("UPDATE bookmarks SET url = '#{new_url}' WHERE url = '#{existing_url}'") if new_title=""
+    con.exec("UPDATE bookmarks SET url = '#{new_url}', title = '#{new_title}' WHERE url = '#{existing_url}'")
+  end
 end
