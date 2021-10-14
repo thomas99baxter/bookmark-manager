@@ -2,16 +2,23 @@
   <tr>
     <th>Id</th>
     <th>Title</th>
+    <th></th>
   </tr>
   <% @bookmarks.each do |bookmark| %>
     
-    <tr>
+    <tr id="<%= bookmark.id %>">
       <td><%= bookmark.id %></td>
       <td><a href="<%= bookmark.url%>"><%= bookmark.title %></a></td>
+      <td>
+        <form action="/delete_bookmark" method="POST">
+        <input type="hidden" value="<%= bookmark.url%>" name="url">
+        <input type="submit" value="Delete Bookmark">
+        </form>
+      </td>
     </tr>
   <%end %>
 </table>
 
-<form method="get" action="/add_bookmark">
+<form method="GET" action="/add_bookmark">
 <input type="submit" value="Add bookmark">
 </form>

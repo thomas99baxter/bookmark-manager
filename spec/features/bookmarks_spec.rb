@@ -5,9 +5,11 @@ feature 'Bookmarks page' do
   scenario 'Visits index page and has all bookmarks' do
     visit('/bookmarks')
 
-    expect(page).to have_content(
-      "Id Title 1 makers 2 schmakers 4 google 3 twitter"
-    )
+    expect(page).to have_content("Id Title")
+    expect(page).to have_content("1 makers")
+    expect(page).to have_content("2 schmakers")
+    expect(page).to have_content("4 google")
+    expect(page).to have_content("3 twitter")
     click_link('google')
   end
 end

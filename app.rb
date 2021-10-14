@@ -29,5 +29,11 @@ class BookmarkManager < Sinatra::Base
     redirect '/bookmarks'
   end
 
+  post "/delete_bookmark" do
+    BookmarkAccessor.delete(params[:url])
+    # TODO: add alert to say bookmark has been deleted
+    redirect "/bookmarks"
+  end
+
   run! if app_file == $PROGRAM_NAME
 end

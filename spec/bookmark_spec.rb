@@ -19,10 +19,8 @@ describe BookmarkAccessor do
   end
 
   it 'should delete a specific bookmark' do
-
-    described_class.delete('http://www.google.com/')
-    described_class.all.select do |bookmark| 
-      expect(bookmark.url == "http://www.google.com/").to eq(false)
-    end
+    expect{described_class.delete('http://www.google.com/')}.to change{described_class.all.filter{
+      |b| b.url == 'http://www.google.com/'
+    }.length}.from(1).to(0)
   end
 end
