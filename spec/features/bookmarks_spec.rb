@@ -8,5 +8,6 @@ feature 'Bookmarks page' do
     expect(page).to have_content(
       "Id Title 1 makers 2 schmakers 4 google 3 twitter"
     )
+    click_link('google')
   end
 end
